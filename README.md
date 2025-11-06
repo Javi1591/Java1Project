@@ -1,53 +1,48 @@
-# Final Java Project – Comprehensive Object-Oriented Application
+# COP2251 – Java Final Project: Car Lot Inventory System
 
-A comprehensive Java console application developed as the final project for **COP2251 – Java Programming**.  
-This project integrates all major programming concepts covered throughout the course, including class design, inheritance, polymorphism, arrays, file I/O, and exception handling.
+## Summary
+This project implements a complete object-oriented car lot management system. It uses encapsulated classes, array-based collections, file input/output, and comparison methods to simulate a dealership’s inventory tracking, sales, and reporting. The program supports creating, modifying, saving, and analyzing vehicle data interactively through a console-based menu system.
 
----
+## Program Behavior
+- Car  
+  - Defines vehicle attributes such as ID, mileage, miles-per-gallon (MPG), cost, sales price, sale status, and profit.  
+  - Provides full constructors, getters, setters, and comparison methods (`compareMPG`, `compareMiles`, and `comparePrice`).  
+  - The `sellCar(double priceSold)` method marks a car as sold, records the sale price, and calculates profit as `priceSold - cost`.  
+  - Includes a `toString()` method for formatted object output.
 
-## Project Overview
+- CarLot  
+  - Maintains an `ArrayList<Car>` representing the inventory.  
+  - Provides methods for adding and selling cars, calculating statistics (average MPG, total profit), and sorting cars by MPG or mileage.  
+  - Includes `saveToDisk()` and `loadFromDisk()` methods to persist and restore inventory data from `carLotInventory.txt`.  
+  - Uses modern `Comparator` logic and Java Streams for calculations like averages and totals.
 
-### Description
-This project demonstrates full application development in Java using an object-oriented design.  
-It includes multiple classes representing real-world entities, modularized logic, and structured data processing.  
-The program performs a combination of input collection, object manipulation, data storage, and formatted output.
+- CarLotMain  
+  - The primary console-driven interface with a text-based menu.  
+  - Allows the user to:
+    - Add new cars to inventory  
+    - Sell cars and record profits  
+    - Save or load the inventory from disk  
+    - Display statistics such as highest MPG, highest mileage, average MPG, and total profit  
+  - Handles user input validation and ensures data consistency.
 
-### Features
-- Implements multiple classes with clear **object-oriented structure**.  
-- Demonstrates **inheritance**, **method overriding**, and **polymorphism**.  
-- Uses **arrays** or **ArrayLists** to manage collections of data objects.  
-- Reads and writes data to external files using `FileReader`, `Scanner`, `PrintWriter`, or `BufferedReader`.  
-- Handles exceptions gracefully with `try`, `catch`, and `finally` blocks.  
-- Displays meaningful messages and formatted output in the console.  
-- Follows modular and maintainable coding practices with reusable methods.
+- CarTester and CarLotTester  
+  - Provide isolated tests for class behavior and data integrity.  
+  - Verify constructors, setters/getters, sorting, comparison, and file persistence functionality.
 
-### Learning Objectives
-- Apply complete OOP principles in a multi-class Java project.  
-- Demonstrate encapsulation, inheritance, and polymorphism in an integrated system.  
-- Manage external data sources through file input and output operations.  
-- Implement robust exception handling and validation for user-driven applications.  
-- Reinforce Java syntax, logic, and documentation practices consistent with professional standards.
-
----
-
-## Program Structure
-1. **Class Definitions** – Define core entities and behaviors with constructors, accessors, and mutators.  
-2. **Inheritance Hierarchy** – Extend base classes for specialized behaviors using `extends` and `super`.  
-3. **Main Driver Program** – Coordinates input, processing, and output while managing object collections.  
-4. **File I/O Processing** – Reads existing data files and writes results or reports.  
-5. **Exception Handling** – Ensures stability under invalid or missing data conditions.  
-
-Each module is self-contained and documented for clarity and reusability.
-
----
+## Key Concepts Demonstrated
+- Object-Oriented Programming: Encapsulation, class design, constructors, method overloading, and polymorphism.  
+- File I/O: Reading and writing structured data to disk with `BufferedWriter` and `FileReader`.  
+- Collections: Using `ArrayList<Car>` to store and manipulate dynamic data.  
+- Data Sorting and Aggregation: Implementing selection sort and Java `Comparator` for comparisons.  
+- Stream API: Calculating averages and sums concisely.  
+- Menu-Driven Control Flow: Interactive console interface with a persistent program loop.  
+- Exception Handling: Try-catch blocks for I/O and user input validation.
 
 ## How to Compile and Run
+Requirements:
+- Java Development Kit (JDK) 17 or later  
+- Command line terminal or IDE (IntelliJ IDEA, Eclipse, or VS Code)
 
-### Requirements
-- Java Development Kit (JDK) 17 or newer  
-- A text editor or IDE such as IntelliJ IDEA, VS Code, or Eclipse
-
-### Command Line Instructions
-```bash
-javac *.java
-java Main
+Commands (from the `nazarioProject/src` directory):
+javac -d ../out module-info.java nazarioProject/Car.java nazarioProject/CarLot.java nazarioProject/CarLotMain.java nazarioProject/CarLotTester.java nazarioProject/CarTester.java  
+java -cp ../out nazarioProject.CarLotMain
